@@ -29,7 +29,7 @@ class Applenews extends WidgetBase {
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $field_name = $items->getName();
-    $default_channels = unserialize($items[$delta]->channels);
+    $default_channels = unserialize($items[$delta]->channels ?? '');
     $channels = $this->getChannels();
 
     /** @var \Drupal\Core\Entity\ContentEntityInterface $entity */
