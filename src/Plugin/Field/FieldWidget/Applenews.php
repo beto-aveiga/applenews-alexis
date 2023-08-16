@@ -330,8 +330,8 @@ class Applenews extends WidgetBase {
         'is_preview' => TRUE,
       ];
       $result = [];
-      $channels = array_keys(array_filter($value['channels']));
-      $sections = array_keys(array_filter($value['sections']));
+      $channels = array_keys(array_filter($value['channels'] ?? []));
+      $sections = array_keys(array_filter($value['sections'] ?? []));
       foreach ($channels as $channel_id) {
         foreach ($sections as $section_id) {
           if (strpos($section_id, $channel_id) === 0) {
