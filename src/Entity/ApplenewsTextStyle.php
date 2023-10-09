@@ -27,6 +27,21 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "id" = "name",
  *     "label" = "label"
  *   },
+ *   config_export = {
+ *     "name",
+ *     "label",
+ *     "fontName",
+ *     "fontSize",
+ *     "textColor",
+ *     "textShadow",
+ *     "textTransform",
+ *     "underline",
+ *     "strikethrough",
+ *     "stroke",
+ *     "backgroundColor",
+ *     "verticalAlignment",
+ *     "tracking",
+ *   },
  *   links = {
  *     "collection" = "/admin/config/services/applenews/text-style",
  *     "add-form" = "/admin/config/services/applenews/text-style/add",

@@ -7,13 +7,11 @@ use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
-use Drupal\Core\Entity\EntityTypeManager;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\contact\MessageInterface;
+use Drupal\Core\Entity\EntityRepository;
+
 /**
  * Form controller for Apple News channel forms.
  *
@@ -52,7 +50,7 @@ class ChannelForm extends ContentEntityForm {
   /**
    * Constructs a MessageForm object.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManager $entity_manager
+   * @param \Drupal\Core\Entity\EntityRepository $entity_repository
    *   The entity manager service.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    *   The language manager service.
@@ -65,8 +63,8 @@ class ChannelForm extends ContentEntityForm {
    * @param \Drupal\applenews\PublisherInterface $publisher
    *   The time service.
    */
-  public function __construct(EntityTypeManager $entity_manager, LanguageManagerInterface $language_manager, DateFormatterInterface $date_formatter, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL, PublisherInterface $publisher = NULL) {
-    parent::__construct($entity_manager, $entity_type_bundle_info, $time);
+  public function __construct(EntityRepository $entity_repository, LanguageManagerInterface $language_manager, DateFormatterInterface $date_formatter, EntityTypeBundleInfoInterface $entity_type_bundle_info = NULL, TimeInterface $time = NULL, PublisherInterface $publisher = NULL) {
+    parent::__construct($entity_repository, $entity_type_bundle_info, $time);
     $this->languageManager = $language_manager;
     $this->dateFormatter = $date_formatter;
     $this->publisher = $publisher;
@@ -77,7 +75,7 @@ class ChannelForm extends ContentEntityForm {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager'),
+      $container->get('entity.repository'),
       $container->get('language_manager'),
       $container->get('date.formatter'),
       $container->get('entity_type.bundle.info'),

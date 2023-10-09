@@ -143,7 +143,7 @@ class ApplenewsPreviewBuilder {
     $this->archive = !empty($filename) ? 'applenews-' . $filename . '.zip' : 'applenews.zip';
     $this->archiveRealPath = $filesystem->realpath($this->fileBuildUri($this->directory));
     $this->archiveFile = $filesystem->realpath($this->fileBuildUri($this->directory . $this->archive));
-    $this->archiveUrl = file_create_url($this->fileBuildUri($this->directory . $this->archive));
+    $this->archiveUrl = \Drupal::service('file_url_generator')->generateAbsoluteString($this->fileBuildUri($this->directory . $this->archive));
 
     if ($entity_id) {
       $drupal_entity_directory = $this->fileBuildUri($this->directory . $entity_id);
@@ -160,7 +160,7 @@ class ApplenewsPreviewBuilder {
       if ($entity_archive) {
         $this->removeDirectories([$this->entityId]);
       }
-      \Drupal::service('file_system')->prepareDirectory($drupal_entity_directory, \Drupal\Core\File\FileSystemInterface::CREATE_DIRECTORY);
+      \Drupal::service('file_system')->prepareDirectory($drupal_entity_directory, FileSystemInterface::CREATE_DIRECTORY);
     }
     return $this;
 

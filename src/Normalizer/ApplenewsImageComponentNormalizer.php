@@ -12,7 +12,7 @@ class ApplenewsImageComponentNormalizer extends ApplenewsComponentNormalizerBase
   /**
    * {@inheritdoc}
    */
-  public function normalize($data, $format = NULL, array $context = []) {
+  public function normalize($data, $format = NULL, array $context = []): array|bool|string|int|float|null|\ArrayObject {
     $component_class = $this->getComponentClass($data['id']);
     $entity = $context['entity'];
 
@@ -41,7 +41,7 @@ class ApplenewsImageComponentNormalizer extends ApplenewsComponentNormalizerBase
    */
   protected function getUrl(array $file) {
     if (isset($file['uri'][0]['value'])) {
-      return file_create_url($file['uri'][0]['value']);
+      return \Drupal::service('file_url_generator')->generateAbsoluteString($file['uri'][0]['value']);
     }
     return NULL;
   }

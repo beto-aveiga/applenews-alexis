@@ -25,6 +25,16 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *    "id" = "id",
  *    "label" = "label",
  *  },
+ *  config_export = {
+ *    "id",
+ *    "label",
+ *    "node_type",
+ *    "columns",
+ *    "width",
+ *    "margin",
+ *    "gutter",
+ *    "components",
+ *   },
  *  links = {
  *    "collection" = "/admin/config/services/applenews",
  *    "add-form" = "/admin/config/services/applenews/template/add",

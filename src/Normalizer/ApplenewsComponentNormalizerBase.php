@@ -44,7 +44,7 @@ abstract class ApplenewsComponentNormalizerBase extends ApplenewsNormalizerBase 
   /**
    * {@inheritdoc}
    */
-  public function supportsNormalization($data, $format = NULL) {
+  public function supportsNormalization($data, $format = NULL): bool {
     // Only consider this normalizer if we are trying to normalize a content
     // entity into the 'applenews' format and the component is of type "text".
     if ($format === $this->format && is_array($data) && isset($data['id'])) {

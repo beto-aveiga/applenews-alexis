@@ -55,7 +55,8 @@ class ApplenewsAdminTest extends ApplenewsTestBase {
       'proxy' => $proxy,
       'proxy_port' => $proxy_port,
     ];
-    $this->drupalPostForm('/admin/config/services/applenews/settings', $edit, 'Save configuration');
+    $this->drupalGet('/admin/config/services/applenews/settings');
+    $this->submitForm($edit, 'Save configuration');
     $assert_session->pageTextContains('The configuration options have been saved.');
     foreach ($edit as $field => $value) {
       if ($field == 'api_secret') {

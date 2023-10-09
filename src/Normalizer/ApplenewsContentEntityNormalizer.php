@@ -38,7 +38,7 @@ class ApplenewsContentEntityNormalizer extends ApplenewsNormalizerBase {
   /**
    * {@inheritdoc}
    */
-  public function supportsNormalization($data, $format = NULL) {
+  public function supportsNormalization($data, $format = NULL): bool {
     // Only consider this normalizer if we are trying to normalize a content
     // entity into the 'applenews' format.
     return $format === $this->format && $data instanceof ContentEntityInterface;
@@ -47,7 +47,7 @@ class ApplenewsContentEntityNormalizer extends ApplenewsNormalizerBase {
   /**
    * {@inheritdoc}
    */
-  public function normalize($data, $format = NULL, array $context = []) {
+  public function normalize($data, $format = NULL, array $context = []): array|bool|string|int|float|null|\ArrayObject {
     // @todo check cache
     $template = $this->entityTypeManager->getStorage('applenews_template')->load($context['template_id']);
     $layout = new Layout($template->columns, $template->width);
