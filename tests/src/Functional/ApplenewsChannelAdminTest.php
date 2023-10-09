@@ -10,6 +10,11 @@ namespace Drupal\Tests\applenews\Functional;
 class ApplenewsChannelAdminTest extends ApplenewsTestBase {
 
   /**
+   * {@inheritdoc}
+   */
+  protected $defaultTheme = 'stark';
+
+  /**
    * Tests template pages.
    */
   public function testAppleNewsTemplateAdminPages() {

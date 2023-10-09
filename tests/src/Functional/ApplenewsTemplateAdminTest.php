@@ -14,6 +14,11 @@ class ApplenewsTemplateAdminTest extends ApplenewsTestBase {
   /**
    * {@inheritdoc}
    */
+  protected $defaultTheme = 'stark';
+
+  /**
+   * {@inheritdoc}
+   */
   protected function setUp(): void {
     parent::setUp();
     \Drupal::service('module_installer')->install(['node']);
