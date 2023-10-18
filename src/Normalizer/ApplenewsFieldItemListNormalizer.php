@@ -15,14 +15,14 @@ class ApplenewsFieldItemListNormalizer extends ApplenewsNormalizerBase {
   /**
    * {@inheritdoc}
    */
-  public function supportsNormalization($data, $format = NULL) {
+  public function supportsNormalization($data, $format = NULL): bool {
     return $format === $this->format && $data instanceof FieldItemListInterface;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function normalize($field_item, $format = NULL, array $context = []) {
+  public function normalize($field_item, $format = NULL, array $context = []): array|bool|string|int|float|null|\ArrayObject {
     $property = $context['field_property'];
     if ($property == 'base') {
       $value = $field_item->value;

@@ -12,7 +12,7 @@ class ApplenewsNestedComponentNormalizer extends ApplenewsComponentNormalizerBas
   /**
    * {@inheritdoc}
    */
-  public function normalize($data, $format = NULL, array $context = []) {
+  public function normalize($data, $format = NULL, array $context = []): array|bool|string|int|float|null|\ArrayObject {
     $component_class = $this->getComponentClass($data['id']);
 
     $component = new $component_class();

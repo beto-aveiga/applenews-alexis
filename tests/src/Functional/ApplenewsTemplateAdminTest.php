@@ -14,7 +14,12 @@ class ApplenewsTemplateAdminTest extends ApplenewsTestBase {
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected $defaultTheme = 'stark';
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp(): void {
     parent::setUp();
     \Drupal::service('module_installer')->install(['node']);
     NodeType::create([
@@ -63,7 +68,7 @@ class ApplenewsTemplateAdminTest extends ApplenewsTestBase {
     foreach ($fields as $field) {
       $assert_session->fieldExists($field);
     }
-    $this->drupalPostForm(NULL, [], 'Save');
+    $this->submitForm([], 'Save');
 
     // Validation.
     $assert_session->pageTextContains('Label field is required.');
@@ -80,7 +85,7 @@ class ApplenewsTemplateAdminTest extends ApplenewsTestBase {
       'gutter' => 20,
       'margin' => 20,
     ];
-    $this->drupalPostForm(NULL, $edit, 'Save');
+    $this->submitForm($edit, 'Save');
     $assert_session->statusCodeEquals(200);
     $assert_session->responseContains(t('Saved the %label Template.', ['%label' => $edit['label']]));
   }

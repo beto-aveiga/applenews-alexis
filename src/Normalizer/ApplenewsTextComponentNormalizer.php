@@ -26,7 +26,7 @@ class ApplenewsTextComponentNormalizer extends ApplenewsComponentNormalizerBase 
   /**
    * {@inheritdoc}
    */
-  public function normalize($data, $format = NULL, array $context = []) {
+  public function normalize($data, $format = NULL, array $context = []): array|bool|string|int|float|null|\ArrayObject {
     $component_class = $this->getComponentClass($data['id']);
     $entity = $context['entity'];
 

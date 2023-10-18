@@ -27,12 +27,12 @@ abstract class ApplenewsTestBase extends BrowserTestBase {
    *
    * @var array
    */
-  public static $modules = ['applenews', 'serialization', 'block', 'field'];
+  protected static $modules = ['applenews', 'serialization', 'block', 'field'];
 
   /**
    * {@inheritdoc}
    */
-  protected function setUp() {
+  protected function setUp(): void {
     parent::setUp();
 
     $this->adminUser = $this->drupalCreateUser([
