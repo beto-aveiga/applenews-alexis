@@ -76,7 +76,7 @@ class Publisher implements PublisherInterface {
    * {@inheritdoc}
    */
   public function updateArticle($article_id, array $data) {
-    $response = $this->getPublisher()->post('/articles/{article_id}', ['article_id' => $article_id], $data);
+    $response = $this->getPublisher()->post('/articles/{article_id}', ['article_id' => $article_id], $data ?? []);
     return $this->handleResponse($response);
   }
 
