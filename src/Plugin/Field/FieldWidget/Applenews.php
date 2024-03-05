@@ -278,7 +278,7 @@ class Applenews extends WidgetBase {
 
     try {
       $storage = \Drupal::entityTypeManager()->getStorage('applenews_channel');
-      $entity_ids = $storage->getQuery()->execute();
+      $entity_ids = $storage->getQuery()->accessCheck(FALSE)->execute();
       $channels = $storage->loadMultiple($entity_ids);
     }
     catch (\Exception $e) {
@@ -303,6 +303,7 @@ class Applenews extends WidgetBase {
     try {
       $storage = \Drupal::entityTypeManager()->getStorage('applenews_template');
       $entity_ids = $storage->getQuery()
+        ->accessCheck(FALSE)
         ->condition('node_type', $entity->bundle())
         ->execute();
       $entities = $storage->loadMultiple($entity_ids);

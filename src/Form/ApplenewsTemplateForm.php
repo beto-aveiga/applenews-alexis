@@ -290,9 +290,8 @@ class ApplenewsTemplateForm extends EntityForm {
    * Helper function to check whether an Example configuration entity exists.
    */
   public function exist($id) {
-    $entity = $this->entityTypeManager->getStorage('applenews_template')->getQuery()
-      ->condition('id', $id)
-      ->execute();
+    $entity = $this->entityTypeManager->getStorage('applenews_template')
+      ->getQuery()->accessCheck(FALSE)->condition('id', $id)->execute();
     return (bool) $entity;
   }
 
