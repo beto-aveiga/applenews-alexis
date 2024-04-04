@@ -71,6 +71,10 @@ class ApplenewsContentEntityNormalizer extends ApplenewsNormalizerBase {
         $normalized = [$normalized];
       }
 
+      if (!is_array($normalized) && !is_object($normalized)) {
+        continue;
+      }
+
       foreach ($normalized as $normalized_component) {
         if ($normalized_component instanceof Component) {
           $document->addComponent($normalized_component);
