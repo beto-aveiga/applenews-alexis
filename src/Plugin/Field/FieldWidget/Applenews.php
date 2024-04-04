@@ -327,7 +327,7 @@ class Applenews extends WidgetBase {
       $value += [
         'status' => FALSE,
         'template' => '',
-        'channels' => '',
+        'channels' => [],
         'is_preview' => TRUE,
       ];
       $result = [];
