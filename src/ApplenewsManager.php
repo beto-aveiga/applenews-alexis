@@ -338,6 +338,7 @@ class ApplenewsManager {
       $query = \Drupal::entityQuery('applenews_article');
 
       $ids = $query
+        ->accessCheck(FALSE)
         ->condition('entity_type', $entity->getEntityType()->id())
         ->condition('entity_id', $entity->id())
         ->condition('field_name', $field_name)
