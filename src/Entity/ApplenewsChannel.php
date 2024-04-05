@@ -202,6 +202,7 @@ class ApplenewsChannel extends ContentEntityBase implements ChannelInterface {
    */
   public static function loadByChannelId($channel_id) {
     $query = \Drupal::entityQuery('applenews_channel');
+    $query->accessCheck(FALSE);
     $ids = $query->condition('id', $channel_id)->execute();
     if ($ids) {
       $entity_type_manager = \Drupal::entityTypeManager();
