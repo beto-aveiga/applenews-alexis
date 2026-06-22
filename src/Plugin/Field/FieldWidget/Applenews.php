@@ -87,16 +87,29 @@ class Applenews extends WidgetBase {
           '#type' => 'value',
           '#value' => $article,
         ];
-        $element['created'] = [
-          '#type' => 'item',
-          '#title' => $this->t('Apple News post date'),
-          '#markup' => $article->getCreatedFormatted(),
-        ];
-        $element['share_url'] = [
-          '#type' => 'item',
-          '#title' => $this->t('Share URL'),
-          '#markup' => $this->t('<a href=":url">:url</a>', [':url' => $article->getShareUrl()]),
-        ];
+        $created = $article->getCreatedFormatted();
+        if ($created) {
+          $element['created'] = [
+            '#type' => 'item',
+            '#title' => $this->t('Apple News post date'),
+            '#markup' => $created,
+          ];
+        }
+        $share_url = $article->getShareUrl();
+        if (is_string($share_url) && $share_url !== '') {
+          $element['share_url'] = [
+            '#type' => 'item',
+            '#title' => $this->t('Share URL'),
+            '#markup' => $this->t('<a href=":url">:url</a>', [':url' => $share_url]),
+          ];
+        }
+        else {
+          $element['share_url'] = [
+            '#type' => 'item',
+            '#title' => $this->t('Share URL'),
+            '#markup' => $this->t('Not available. Preview articles and articles still processing on Apple News may not have a public share link yet.'),
+          ];
+        }
         $delete_url = Url::fromRoute('applenews.remote.article_delete', ['entity_type' => $entity->getEntityTypeId(), 'entity' => $entity->id()]);
         $element['delete'] = [
           '#type' => 'item',
